@@ -1,0 +1,15 @@
+﻿@model IEnumerable<itec420.Models.ApplicationUser>
+
+<h2>Пользователи</h2>
+<table>
+    <tr><th>Email</th><th>Действия</th></tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>
+                <a asp-action="ManageRoles" asp-route-userId="@user.Id">Управление ролями</a>
+            </td>
+        </tr>
+    }
+</table>

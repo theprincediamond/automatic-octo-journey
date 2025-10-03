@@ -1,0 +1,28 @@
+﻿<h2>Управление ролями для @ViewBag.UserName</h2>
+
+<h3>Текущие роли</h3>
+<ul>
+    @foreach (var role in ViewBag.UserRoles)
+    {
+        <li>
+            @role
+            <form asp-action="RemoveRole" method="post">
+                <input type="hidden" name="userId" value="@ViewBag.UserId" />
+                <input type="hidden" name="roleName" value="@role" />
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+    }
+</ul>
+
+<h3>Добавить роль</h3>
+<form asp-action="AddRole" method="post">
+    <input type="hidden" name="userId" value="@ViewBag.UserId" />
+    <select name="roleName">
+        @foreach (var role in ViewBag.AllRoles)
+        {
+            <option value="@role.Name">@role.Name</option>
+        }
+    </select>
+    <button type="submit">Добавить</button>
+</form>
